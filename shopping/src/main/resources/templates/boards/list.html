@@ -1,11 +1,62 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/board.css">
+    <link rel="stylesheet" href="/css/common.css">
     <title>게시판 리스트</title>
 </head>
+
 <body>
-    <h2>게시판 리스트</h2>
+    <!-- ✅ Header Fragment include -->
+    <!-- <div th:replace="fragments/header :: header"></div> -->
+
+    <!-- ✅ Main Container -->
+    <main id="main">
+        <div class="inner">
+            <section id="board-section" class="container board-container">
+                <h2 class="btitle">게시판 목록</h2>
+                <div class="tboard">
+                    <table id="board-table" class="board-table">
+                        <thead>
+                            <tr>
+                                <th class="col-no">번호</th>
+                                <th class="col-title">제목</th>
+                                <th class="col-writer">작성자</th>
+                                <th class="col-date">작성일</th>
+                                <th class="col-views">조회수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <th:block th:each="board : ${boardList}">
+                                <tr>
+                                    <td th:text="${board.boardId}"></td>
+                                    <td>
+                                        <a th:href="|/boards/read?boardId=${board.boardId}|"
+                                            th:text="${board.title}"></a>
+                                    </td>
+                                    <td th:text="${board.writer}"></td>
+                                    <td th:text="${#dates.format(board.createdAt, 'yyyy-MM-dd')}"></td>
+                                    <td th:text="${board.viewCount}"></td>
+                                </tr>
+                            </th:block>
+                        </tbody>
+                    </table>
+
+                    <!-- 버튼 영역 -->
+                    <div class="board-btns">
+                        <a class="btn btn-primary" href="/boards/insert">글쓰기</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ✅ Footer Fragment include -->
+    <!-- <div th:replace="fragments/footer :: footer"></div> -->
 </body>
+
 </html>
