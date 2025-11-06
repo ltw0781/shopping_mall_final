@@ -14,34 +14,41 @@ public class BoardServiceImpl implements BoardService{
     @Autowired
     BoardMapper boardMapper;
 
+    /**
+     * 게시판 리스트(목록)
+     */
     @Override
     public List<Board> list() throws Exception {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'list'");
+
+        List<Board> boardList = boardMapper.list();
+
+        return boardList;
+
     }
 
     @Override
-    public Board select(int boardId) throws Exception {
+    public Board read(int boardId) throws Exception {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'select'");
+        throw new UnsupportedOperationException("Unimplemented method 'boardRead'");
     }
 
     @Override
     public int insert(Board board) throws Exception {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insert'");
+        throw new UnsupportedOperationException("Unimplemented method 'boardInsert'");
     }
 
     @Override
     public int update(Board board) throws Exception {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        throw new UnsupportedOperationException("Unimplemented method 'boardUpdate'");
     }
 
     @Override
     public int delete(int boardId) throws Exception {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        throw new UnsupportedOperationException("Unimplemented method 'boardDelete'");
     }
+
     
 }

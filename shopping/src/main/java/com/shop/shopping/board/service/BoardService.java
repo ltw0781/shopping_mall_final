@@ -10,7 +10,7 @@ public interface BoardService {
     public List<Board> list() throws Exception;
 
     // 게시글 상세
-    public Board select(int boardId) throws Exception;
+    public Board read(int boardId) throws Exception;
 
     // 게시글 등록
     public int insert(Board board) throws Exception;
