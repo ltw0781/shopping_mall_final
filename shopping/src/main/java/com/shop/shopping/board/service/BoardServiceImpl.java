@@ -28,8 +28,8 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public Board read(int boardId) throws Exception {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'boardRead'");
+        Board board = boardMapper.read(boardId);
+        return board;
     }
 
     @Override
@@ -40,8 +40,8 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public int update(Board board) throws Exception {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'boardUpdate'");
+        int result = boardMapper.update(board);
+        return result;
     }
 
     @Override
