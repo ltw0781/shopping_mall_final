@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT *
         FROM board
         ORDER BY board_id DESC
+        LIMIT #{page.index}, #{page.rows}
     </select>
 
     <select id="read" resultType="Board">
@@ -37,5 +38,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         DELETE FROM board
         WHERE board_id = #{boardId}
     </delete>
+
+    <!-- 데이터 개수 조회 - [검색] -->
+    <select id="count" resultType="int">
+        SELECT COUNT(*)
+        FROM board
+        ORDER BY created_at DESC
+    </select>
 
 </mapper>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shop.shopping.board.domain.Board;
 import com.shop.shopping.board.service.BoardService;
+import com.shop.shopping.common.domain.Page;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,11 +25,12 @@ public class BoardController {
     private BoardService boardService;
 
     @GetMapping("/list")
-    public void list(Model model) throws Exception {
+    public void list(Model model, Page page) throws Exception {
 
-        List<Board> boardList = boardService.list();
+        List<Board> boardList = boardService.list(page);
 
         model.addAttribute("boardList", boardList);
+        model.addAttribute("page", page);
 
     }
 

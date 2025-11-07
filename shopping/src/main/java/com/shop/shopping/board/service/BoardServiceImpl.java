@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.shop.shopping.board.domain.Board;
 import com.shop.shopping.board.mapper.BoardMapper;
+import com.shop.shopping.common.domain.Page;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -18,9 +19,12 @@ public class BoardServiceImpl implements BoardService{
      * 게시판 리스트(목록)
      */
     @Override
-    public List<Board> list() throws Exception {
+    public List<Board> list(Page page) throws Exception {
 
-        List<Board> boardList = boardMapper.list();
+        int total = boardMapper.count();
+        page.setTotal(total);
+
+        List<Board> boardList = boardMapper.list(page);
 
         return boardList;
 
