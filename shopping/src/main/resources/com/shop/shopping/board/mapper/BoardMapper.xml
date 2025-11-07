@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="list" resultType="Board">
         SELECT *
         FROM board
+        ORDER BY board_id DESC
     </select>
 
     <select id="read" resultType="Board">
@@ -17,14 +18,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE board_id = #{boardId}
     </select>
 
+    <insert id="insert">
+        INSERT INTO board(title, writer, content, created_at)
+        VALUES ( #{title}, #{writer}, #{content}, now())
+    </insert>
+
     <!-- 게시글 수정 -->
     <update id="update">
         UPDATE board
             SET title = #{title}
                 <!-- ,user_id = #{userId} -->
+                ,writer = #{writer}
                 ,content = #{content}
-                ,updated_at = now()
         WHERE board_id = #{boardId}
     </update>
+
+    <delete id="delete">
+        DELETE FROM board
+        WHERE board_id = #{boardId}
+    </delete>
 
 </mapper>

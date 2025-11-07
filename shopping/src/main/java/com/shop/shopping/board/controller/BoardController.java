@@ -42,6 +42,25 @@ public class BoardController {
 
     }
 
+    @GetMapping("/insert")
+    public String insert() throws Exception {
+
+        return "/boards/insert";
+
+    }
+
+    @PostMapping("/insert")
+    public String insertPro(Board board) throws Exception {
+
+        int result = boardService.insert(board);
+
+        if (result > 0) {
+            return "redirect:/boards/list";
+        }
+        return "/boards/insert";
+
+    }
+
     @GetMapping("/update")
     public String update(@RequestParam("boardId") int boardId, Model model) throws Exception {
 
@@ -62,6 +81,19 @@ public class BoardController {
             return "redirect:/boards/list";
         }
         int boardId = board.getBoardId();
+        return "redirect:/boards/update?boardId=" + boardId + "&error";
+
+    }
+
+    @PostMapping("/delete")
+    public String delete(@RequestParam("boardId") int boardId) throws Exception {
+
+        int result = boardService.delete(boardId);
+
+        if (result > 0) {
+            return "redirect:/boards/list";
+        }
+
         return "redirect:/boards/update?boardId=" + boardId + "&error";
 
     }

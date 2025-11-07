@@ -34,8 +34,10 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public int insert(Board board) throws Exception {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'boardInsert'");
+
+        int result = boardMapper.insert(board);
+        return result;
+
     }
 
     @Override
@@ -46,8 +48,8 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public int delete(int boardId) throws Exception {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'boardDelete'");
+        int result = boardMapper.delete(boardId);
+        return result;
     }
 
     

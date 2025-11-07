@@ -16,10 +16,11 @@
             <h2 class="page-title">게시글 수정</h2>
 
             <div class="board-form-wrap">
-                <form action="/boards/update" method="post">
+                <form id="form" action="/boards/update" method="post">
+                    <input type="hidden" name="boardId" th:value="${board.boardId}">
 
                     <!-- 카테고리 -->
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="category">카테고리</label>
                         <select id="category" name="category" class="form-control" th:value="*{category}">
                             <option value="공지사항" th:selected="${board.category == '공지사항'}">공지사항</option>
@@ -27,36 +28,51 @@
                             <option value="리뷰" th:selected="${board.category == '리뷰'}">리뷰</option>
                             <option value="QnA" th:selected="${board.category == 'QnA'}">QnA</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     <!-- 제목 -->
                     <div class="form-group">
                         <label for="title">제목</label>
-                        <input type="text" id="title" name="title" class="form-control" th:value="${board.title}" required>
+                        <input type="text" id="title" name="title" class="form-control" th:value="${board.title}"
+                            required>
                     </div>
 
                     <!-- 작성자 -->
                     <div class="form-group">
                         <label for="writer">작성자</label>
-                        <input type="text" id="writer" name="writer" class="form-control" th:value="${board.writer}" readonly>
+                        <input type="text" id="writer" name="writer" class="form-control" th:value="${board.writer}"
+                            readonly>
                     </div>
 
                     <!-- 내용 -->
                     <div class="form-group">
                         <label for="content">내용</label>
-                        <textarea id="content" name="content" class="form-control" rows="10" required th:text="${board.content}"></textarea>
+                        <textarea id="content" name="content" class="form-control" rows="10" required
+                            th:text="${board.content}"></textarea>
                     </div>
 
                     <!-- 버튼 영역 -->
                     <div class="board-btns">
                         <button type="submit" class="btn btn-primary">수정 완료</button>
-                        <a th:href="@{/boards/list}" class="btn btn-secondary">취소</a>
+                        <button type="button" onclick="moveCancel()">취소</button>
                     </div>
                 </form>
             </div>
         </section>
     </main>
 
+    <script>
+
+        // 👩‍💻 모델 객체를 자바스크립트로 가져오는 방법
+        let boardId = "[[${board.boardId}]]"
+
+        // 상세 화면 이동
+        function moveCancel() {
+            location.href = '/boards/read?boardId=' + boardId
+        }
+
+
+    </script>
 
 </body>
 
