@@ -1,11 +1,63 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판 수정</title>
 </head>
+
 <body>
     <h2>게시판 수정화면</h2>
+
+    <!-- ✅ Main Content -->
+    <main id="main">
+        <section id="board-section" class="container board-container">
+            <h2 class="page-title">게시글 수정</h2>
+
+            <div class="board-form-wrap">
+                <form action="/boards/update" method="post">
+
+                    <!-- 카테고리 -->
+                    <div class="form-group">
+                        <label for="category">카테고리</label>
+                        <select id="category" name="category" class="form-control" th:value="*{category}">
+                            <option value="공지사항" th:selected="${board.category == '공지사항'}">공지사항</option>
+                            <option value="이벤트" th:selected="${board.category == '이벤트'}">이벤트</option>
+                            <option value="리뷰" th:selected="${board.category == '리뷰'}">리뷰</option>
+                            <option value="QnA" th:selected="${board.category == 'QnA'}">QnA</option>
+                        </select>
+                    </div>
+
+                    <!-- 제목 -->
+                    <div class="form-group">
+                        <label for="title">제목</label>
+                        <input type="text" id="title" name="title" class="form-control" th:value="${board.title}" required>
+                    </div>
+
+                    <!-- 작성자 -->
+                    <div class="form-group">
+                        <label for="writer">작성자</label>
+                        <input type="text" id="writer" name="writer" class="form-control" th:value="${board.writer}" readonly>
+                    </div>
+
+                    <!-- 내용 -->
+                    <div class="form-group">
+                        <label for="content">내용</label>
+                        <textarea id="content" name="content" class="form-control" rows="10" required th:text="${board.content}"></textarea>
+                    </div>
+
+                    <!-- 버튼 영역 -->
+                    <div class="board-btns">
+                        <button type="submit" class="btn btn-primary">수정 완료</button>
+                        <a th:href="@{/boards/list}" class="btn btn-secondary">취소</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+
 </body>
+
 </html>

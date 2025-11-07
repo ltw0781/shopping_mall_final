@@ -33,7 +33,7 @@ public class BoardController {
     }
 
     @GetMapping("/read")
-    public String read(@RequestParam("boardId") int boardId, Model model) throws Exception{
+    public String read(@RequestParam("boardId") int boardId, Model model) throws Exception {
 
         Board board = boardService.read(boardId);
         model.addAttribute("board", board);
@@ -41,29 +41,29 @@ public class BoardController {
         return "/boards/read";
 
     }
-    
+
     @GetMapping("/update")
     public String update(@RequestParam("boardId") int boardId, Model model) throws Exception {
 
         Board board = boardService.read(boardId);
-
+        
         model.addAttribute("board", board);
 
         return "/boards/update";
 
     }
 
-    @PostMapping("update")
+    @PostMapping("/update")
     public String updatePro(Board board) throws Exception {
 
         int result = boardService.update(board);
 
-        if ( result > 0 ) {
+        if (result > 0) {
             return "redirect:/boards/list";
         }
         int boardId = board.getBoardId();
         return "redirect:/boards/update?boardId=" + boardId + "&error";
 
     }
-    
+
 }

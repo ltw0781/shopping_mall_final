@@ -10,21 +10,20 @@
 <body>
     <!-- ✅ Main Content -->
     <main id="main">
-        <section id="board-section" class="container board-container">
             <h2 class="page-title">게시글 상세보기</h2>
 
             <div class="board-detail-wrap">
 
-                <!-- 제목 -->
-                <div class="board-title">
-                    <h3 th:text="${board.title}">게시글 제목입니다.</h3>
-                </div>
-                <form action="/board/delete" method="post">
+                <form id="form" action="/boards/delete" method="post">
+                    <input type="text" name="boardId" th:value="${board.boardId}">
+                    <!-- 제목 -->
+                    <div class="board-title">
+                        <h3 th:text="${board.title}">게시글 제목입니다.</h3>
+                    </div>
                     <!-- 메타 정보 -->
                     <div class="board-meta">
                         <span class="meta-writer">작성자: <strong th:text="${board.writer}">홍길동</strong></span>
-                        <span class="meta-date">작성일: <span
-                                th:text="${#dates.format(board.createdAt, 'yyyy-MM-dd HH:mm')}"></span></span>
+                        <span class="meta-date">작성일: <span th:text="${#dates.format(board.createdAt, 'yyyy-MM-dd')}"></span></span>
                         <span class="meta-views">조회수: <span th:text="${board.viewCount}"></span></span>
                     </div>
 
@@ -33,9 +32,7 @@
 
                     <!-- 본문 내용 -->
                     <div class="board-content">
-                        <p th:utext="${#strings.replace(board.content, '\n', '<br/>')}">
-                            게시글의 상세 내용이 표시되는 영역입니다.
-                        </p>
+                        <p th:text="${board.content}"></p>
                     </div>
 
                     <!-- 구분선 -->
@@ -43,16 +40,41 @@
 
                     <!-- 버튼 영역 -->
                     <div class="board-btns">
-                        <a th:href="@{/boards/list}" class="btn btn-secondary">목록</a>
-                        <a th:href="|/boards/update?boardId=@Param{board.boardId}|" class="btn btn-primary">수정</a>
-                        <a th:href="@{'/boards/delete/' + ${board.boardId}}" class="btn btn-danger"
-                            onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
+                        <button type="button" onclick="moveList()">목록</button>
+                        <button type="button" onclick="moveUpdate()">수정</button>
+                        <button type="button" onclick="actionDelete()">삭제</button>
                     </div>
                 </form>
 
             </div>
-        </section>
     </main>
+
+    <script>
+
+        let form = document.getElementById('form')
+
+        // 👩‍💻 모델 객체를 자바스크립트로 가져오는 방법
+        let boardId = "[[${board.boardId}]]"
+
+        // 수정 화면 이동
+        function moveUpdate() {
+            location.href = '/boards/update?boardId=' + boardId
+        }
+
+        // 삭제 요청
+        function actionDelete() {
+            let check = confirm('정말로 삭제하시겠습니까?')
+            if (check) {
+                form.action = '/boards/delete'
+                form.submit()
+            }
+        }
+
+        // 목록 화면 이동
+        function moveList() {
+            location.href = '/boards/list'
+        }
+    </script>
 
 </body>
 
