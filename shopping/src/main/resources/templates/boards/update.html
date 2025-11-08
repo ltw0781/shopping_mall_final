@@ -4,21 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/reset.css">
     <title>게시판 수정</title>
 </head>
 
 <body>
-    <h2>게시판 수정화면</h2>
-
     <!-- ✅ Main Content -->
     <main id="main">
         <section id="board-section" class="container board-container">
-            <h2 class="page-title">게시글 수정</h2>
+            <div class="board-wrap inner">
+                <h2 class="board-title">게시글 수정</h2>
 
-            <div class="board-form-wrap">
-                <form id="form" action="/boards/update" method="post">
+                <form class="board-form" id="form" action="/boards/update" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="boardId" th:value="${board.boardId}">
-
                     <!-- 카테고리 -->
                     <div class="form-group">
                         <label for="category">카테고리</label>
@@ -29,32 +28,21 @@
                             <option value="QnA" th:selected="${board.category == 'QnA'}">QnA</option>
                         </select>
                     </div>
-
-                    <!-- 제목 -->
-                    <div class="form-group">
+                    <div class="form-row">
                         <label for="title">제목</label>
-                        <input type="text" id="title" name="title" class="form-control" th:value="${board.title}"
-                            required>
+                        <input type="text" id="title" name="title" th:value="${board.title}" required>
                     </div>
-
-                    <!-- 작성자 -->
-                    <div class="form-group">
+                    <div class="form-row">
                         <label for="writer">작성자</label>
-                        <input type="text" id="writer" name="writer" class="form-control" th:value="${board.writer}"
-                            readonly>
+                        <input type="text" id="writer" name="writer" th:value="${board.writer}" readonly>
                     </div>
-
-                    <!-- 내용 -->
-                    <div class="form-group">
+                    <div class="form-row">
                         <label for="content">내용</label>
-                        <textarea id="content" name="content" class="form-control" rows="10" required
-                            th:text="${board.content}"></textarea>
+                        <textarea id="content" name="content" rows="10" required th:text="${board.content}"></textarea>
                     </div>
-
-                    <!-- 버튼 영역 -->
-                    <div class="board-btns">
-                        <button type="submit" class="btn btn-primary">수정 완료</button>
-                        <button type="button" onclick="moveCancel()">취소</button>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">저장</button>
+                        <button type="button" onclick="moveCancel()" class="btn btn-secondary">취소</button>
                     </div>
                 </form>
             </div>
