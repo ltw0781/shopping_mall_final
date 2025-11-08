@@ -16,6 +16,10 @@
 
                 <form id="form" action="/boards/delete" method="post">
                     <input type="text" name="boardId" th:value="${board.boardId}">
+                    <!-- 카테고리 -->
+                    <div class="board-category">
+                        <span class="meta-category">카테고리 : <span th:text="${board.category}"></span></span>
+                    </div>
                     <!-- 제목 -->
                     <div class="board-title">
                         <h3 th:text="${board.title}">게시글 제목입니다.</h3>

@@ -20,17 +20,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
     <insert id="insert">
-        INSERT INTO board(title, writer, content, created_at)
-        VALUES ( #{title}, #{writer}, #{content}, now())
+        INSERT INTO board( category, title, writer, content, created_at )
+        VALUES ( #{category},  #{title}, #{writer}, #{content}, now())
     </insert>
 
     <!-- 게시글 수정 -->
     <update id="update">
         UPDATE board
-            SET title = #{title}
+            SET category = #{category}
+                ,title = #{title}
                 <!-- ,user_id = #{userId} -->
                 ,writer = #{writer}
                 ,content = #{content}
+                ,updated_at = now()
         WHERE board_id = #{boardId}
     </update>
 
