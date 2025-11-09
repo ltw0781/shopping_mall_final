@@ -398,3 +398,226 @@ body {
     color: #fff;
     border-color: #ff5b59;
 }
+
+
+/* 마이페이지 */
+
+/* 📌 마이페이지 스타일 */
+.mypage-wrap {
+  background:#fff;
+  margin:32px auto;
+  padding:24px;
+  border-radius:8px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.05);
+}
+.mypage-title {
+  font-size:1.4rem;
+  font-weight:700;
+  margin-bottom:24px;
+}
+
+/* 회원정보 카드 */
+.profile-box h3, .order-box h3, .quick-links h3 {
+  font-size:1.1rem;
+  margin-bottom:12px;
+  border-left:4px solid #ff5b59;
+  padding-left:8px;
+}
+
+.profile-card {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:20px;
+  background:#fafafa;
+  border:1px solid #eee;
+  border-radius:8px;
+  padding:20px;
+}
+.profile-img {
+  width:100px; height:100px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#ddd;
+}
+.profile-info p {
+  margin:4px 0;
+}
+.profile-actions {
+  margin-left:auto;
+  display:flex;
+  gap:10px;
+}
+.profile-actions .btn {
+  font-size:0.9rem;
+}
+
+/* 주문 테이블 */
+.order-table {
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+.order-table th, .order-table td {
+  padding:10px;
+  text-align:center;
+  border-bottom:1px solid #eee;
+}
+.order-table thead {
+  background:#f8f8f8;
+}
+.status {
+  padding:4px 8px;
+  border-radius:4px;
+  font-size:0.85rem;
+  color:#fff;
+}
+.status.done { background:#4caf50; }
+.status.ing { background:#2196f3; }
+.status.cancel { background:#f44336; }
+.order-more {
+  text-align:right;
+  margin-top:10px;
+}
+
+/* 바로가기 카드 */
+.quick-grid {
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:16px;
+}
+.quick-card {
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:8px;
+  text-align:center;
+  padding:20px;
+  text-decoration:none;
+  color:#333;
+  transition:all .2s;
+  box-shadow:0 1px 2px rgba(0,0,0,0.05);
+}
+.quick-card:hover {
+  transform:translateY(-3px);
+  border-color:#ff5b59;
+}
+.quick-card .icon {
+  font-size:2rem;
+  margin-bottom:8px;
+}
+
+@media(max-width:768px){
+  .profile-card { flex-direction:column; align-items:flex-start; }
+  .profile-actions { margin-left:0; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

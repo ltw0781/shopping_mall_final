@@ -8,9 +8,9 @@ import lombok.Data;
 public class Board {
     
     private int boardId;        // 게시글 ID
-    private String category;    // 카테고리
+    private String userId;      // 유저 ID
+    private String category;  // 카테고리
     private String title;       // 게시글 제목
-    private String writer;      // 게시글 작성자
     private String content;     // 게시글 내용
     private Date createdAt;     // 게시글 등록일자
     private Date updatedAt;     // 게식글 수정일자

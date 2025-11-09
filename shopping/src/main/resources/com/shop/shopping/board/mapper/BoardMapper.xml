@@ -20,8 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
     <insert id="insert">
-        INSERT INTO board( category, title, writer, content, created_at )
-        VALUES ( #{category},  #{title}, #{writer}, #{content}, now())
+        INSERT INTO board( category, title, user_id, content, created_at )
+        VALUES ( #{category},  #{title}, #{userId}, #{content}, now())
     </insert>
 
     <!-- 게시글 수정 -->
@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             SET category = #{category}
                 ,title = #{title}
                 <!-- ,user_id = #{userId} -->
-                ,writer = #{writer}
+                ,user_id = #{userId}
                 ,content = #{content}
                 ,updated_at = now()
         WHERE board_id = #{boardId}

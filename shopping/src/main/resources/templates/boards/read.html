@@ -25,7 +25,7 @@
                     <div class="view-head">
                         <h3 th:text="${board.title}"></h3>
                         <div class="meta">
-                            <span th:text="|작성자 : ${board.writer}|"></span>
+                            <span th:text="|작성자 : ${board.userId}|"></span>
                             <span th:text="|등록일 : ${#dates.format(board.createdAt, 'yyyy-MM-dd')}" |></span>
                             <span th:text="|조회수 : ${board.viewCount}|"></span>
                         </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layouts/board_layout}" lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
     <title>게시판 리스트</title>
 </head>
 
-<body>
+<body layout:fragment="content">
     <!-- ✅ Header Fragment include -->
     <!-- <div th:replace="fragments/header :: header"></div> -->
 
@@ -55,7 +55,7 @@
                                         <a th:href="|/boards/read?boardId=${board.boardId}|"
                                             th:text="${board.title}"></a>
                                     </td>
-                                    <td th:text="${board.writer}"></td>
+                                    <td th:text="${board.userId}"></td>
                                     <td th:text="${#dates.format(board.createdAt, 'yyyy-MM-dd')}"></td>
                                     <td th:text="${board.viewCount}"></td>
                                 </tr>
