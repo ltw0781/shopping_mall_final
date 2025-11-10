@@ -40,6 +40,9 @@ public class BoardServiceImpl implements BoardService{
     public int insert(Board board) throws Exception {
 
         int result = boardMapper.insert(board);
+
+        String parentTable = "board";
+
         return result;
 
     }

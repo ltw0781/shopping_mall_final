@@ -6,11 +6,12 @@
         <id property="no" column="no"/>
         <result property="parentTable" column="parent_table"/>
         <result property="parentNo" column="parent_no"/>
+        <result property="originName" column="origin_name"/>
         <result property="fileName" column="file_name"/>
         <result property="filePath" column="file_path"/>
         <result property="fileSize" column="file_size"/>
-        <result property="regDate" column="reg_date"/>
-        <result property="updDate" column="upd_date"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
         <result property="fileCode" column="file_code"/>
     </resultMap>
 
@@ -49,8 +50,8 @@
 
     <!-- 파일 등록 -->
     <insert id="insert">
-        INSERT INTO file(parent_table, parent_no, file_name, file_path, file_size, file_code)
-        VALUES (#{parentTable}, #{parentNo}, #{fileName}, #{filePath}, #{fileSize}, #{fileCode})
+        INSERT INTO file( parent_table, parent_no, file_name, origin_name, file_path, file_size, file_code )
+        VALUES ( #{parentTable}, #{parentNo}, #{fileName}, #{originName}, #{filePath}, #{fileSize}, #{fileCode} )
     </insert>
 
 
