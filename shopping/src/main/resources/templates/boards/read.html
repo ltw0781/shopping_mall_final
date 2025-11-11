@@ -25,7 +25,7 @@
                     <div class="view-head">
                         <h3 th:text="${board.title}"></h3>
                         <div class="meta">
-                            <span th:text="|작성자 : ${board.userId}|"></span>
+                            <span th:text="|작성자 : ${board.writer}|"></span>
                             <span th:text="|등록일 : ${#dates.format(board.createdAt, 'yyyy-MM-dd')}" |></span>
                             <span th:text="|조회수 : ${board.viewCount}|"></span>
                         </div>
@@ -34,6 +34,16 @@
                     <div class="view-body">
                         <p th:text="${board.content}"></p>
                     </div>
+
+                    <th:block th:each="file : ${fileList}">
+                        <li>
+                            <!-- 파일명 (다운로드) -->
+                            <a th:href="|/file/${file.no}|" th:text="${file.originName}"></a>
+                            <!-- 파일 삭제 -->
+                            <button type="button" th:onclick="|deleteFile(this, ${file.no})|">삭제</button>
+                        </li>
+                    </th:block>
+
                     <!-- 버튼 영역 -->
                     <div class="board-btns">
                         <button type="button" onclick="moveUpdate()" class="btn btn-primary">수정</button>

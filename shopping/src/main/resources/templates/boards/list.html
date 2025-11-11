@@ -55,7 +55,7 @@
                                         <a th:href="|/boards/read?boardId=${board.boardId}|"
                                             th:text="${board.title}"></a>
                                     </td>
-                                    <td th:text="${board.userId}"></td>
+                                    <td th:text="${board.writer}"></td>
                                     <td th:text="${#dates.format(board.createdAt, 'yyyy-MM-dd')}"></td>
                                     <td th:text="${board.viewCount}"></td>
                                 </tr>

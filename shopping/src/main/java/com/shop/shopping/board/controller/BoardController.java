@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shop.shopping.board.domain.Board;
 import com.shop.shopping.board.service.BoardService;
+import com.shop.shopping.common.domain.Files;
 import com.shop.shopping.common.domain.Page;
+import com.shop.shopping.common.service.FileService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +25,9 @@ public class BoardController {
 
     @Autowired
     private BoardService boardService;
+
+    @Autowired
+    private FileService fileService;
 
     @GetMapping("/list")
     public void list(Model model, Page page) throws Exception {
@@ -35,11 +40,19 @@ public class BoardController {
     }
 
     @GetMapping("/read")
-    public String read(@RequestParam("boardId") int boardId, Model model) throws Exception {
+    public String read(@RequestParam("boardId") int boardId, Model model, Files file) throws Exception {
 
         Board board = boardService.read(boardId);
-        model.addAttribute("board", board);
+        // 파일 목록 요청
+        file.setParentTable("board");
+        file.setParentNo(boardId);
+        List<Files> fileList = fileService.listByParent(file);
 
+
+        // 모델 등록
+        model.addAttribute("board", board);
+        model.addAttribute("fileList", fileList);
+        // 뷰 페이지 지정
         return "/boards/read";
 
     }

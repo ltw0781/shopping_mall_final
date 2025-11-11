@@ -43,14 +43,20 @@ public class FileServiceImpl implements FileService {
     @Override
     public int insert(Files file) throws Exception {
         int result = fileMapper.insert(file);
-        return result;
+        if(result > 0) {
+            return result;
+        }
+        return 0;
     }
 
     // 파일 수정
     @Override
     public int update(Files file) throws Exception {
         int result = fileMapper.update(file);
-        return result;
+        if(result > 0) {
+            return result;
+        }
+        return 0;
     }
 
     // 파일 삭제
@@ -135,6 +141,7 @@ public class FileServiceImpl implements FileService {
 
         // 파일 정보 등록
         file.setFileName(fileName);
+        file.setOriginName(originName);
         // filePath C:/upload/UID_원본파일명.xxx
         String filePath = uploadPath + "/" + fileName;
         file.setFilePath(filePath);

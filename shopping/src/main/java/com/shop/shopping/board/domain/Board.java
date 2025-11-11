@@ -13,7 +13,7 @@ import lombok.Data;
 public class Board {
     
     private int boardId;        // 게시글 ID
-    private String userId;      // 유저 ID
+    private String writer;      // 작성자
     private String category;  // 카테고리
     private String title;       // 게시글 제목
     private String content;     // 게시글 내용

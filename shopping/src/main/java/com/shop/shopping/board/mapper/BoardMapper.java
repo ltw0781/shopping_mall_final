@@ -29,4 +29,7 @@ public interface BoardMapper {
     // 게시글 데이터 개수 조회
     public int count() throws Exception;
 
+    // 게시글 번호(기본키) 최댓값
+    public int maxPk() throws Exception;
+
 }
