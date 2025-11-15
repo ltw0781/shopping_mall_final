@@ -29,3 +29,8 @@
 
 
 # 2025-11-11 회원가입 및 로그인 기능 추가
+
+
+
+
+# https://www.youtube.com/watch?v=M6vtUaAezG0&list=PL4C2AmBC9jOazwWmzoWgheV9QXPtrlutD
